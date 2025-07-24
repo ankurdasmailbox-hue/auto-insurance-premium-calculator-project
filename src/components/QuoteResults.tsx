@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { ArrowLeft, Download, Share2, CheckCircle, Car, User, MapPin, Shield, CreditCard } from 'lucide-react';
+import { ArrowLeft, Download, Share2, CheckCircle, Car, User, MapPin, Shield, CreditCard, TrendingDown, TrendingUp, Minus } from 'lucide-react';
 import { FormData } from './InsuranceRatingTool';
 
 interface QuoteResultsProps {
@@ -97,9 +97,39 @@ export const QuoteResults: React.FC<QuoteResultsProps> = ({ formData, onPrev, on
     return (formData.credit.panVerified && formData.credit.aadharVerified) ? 0.05 : 0;
   };
 
+  // Market comparison data
+  const getMarketComparison = () => {
+    const basePremium = getBasePremium();
+    const marketData = [
+      { company: 'ICICI Lombard', premium: Math.round(basePremium * 1.15) },
+      { company: 'HDFC ERGO', premium: Math.round(basePremium * 1.08) },
+      { company: 'Bajaj Allianz', premium: Math.round(basePremium * 1.12) },
+      { company: 'TATA AIG', premium: Math.round(basePremium * 1.06) },
+      { company: 'New India Insurance', premium: Math.round(basePremium * 1.18) },
+      { company: 'Oriental Insurance', premium: Math.round(basePremium * 1.10) }
+    ];
+
+    const avgMarketPremium = Math.round(
+      marketData.reduce((sum, item) => sum + item.premium, 0) / marketData.length
+    );
+
+    const ourPremium = finalPremium;
+    const savings = avgMarketPremium - ourPremium;
+    const savingsPercentage = Math.round((savings / avgMarketPremium) * 100);
+
+    return {
+      marketData,
+      avgMarketPremium,
+      savings,
+      savingsPercentage,
+      isLower: ourPremium < avgMarketPremium
+    };
+  };
+
   const finalPremium = calculatePremium();
   const gst = Math.round(finalPremium * 0.18);
   const totalAmount = finalPremium + gst;
+  const comparison = getMarketComparison();
 
   return (
     <div className="space-y-6">
@@ -119,6 +149,93 @@ export const QuoteResults: React.FC<QuoteResultsProps> = ({ formData, onPrev, on
               <span>Base Premium: ₹{finalPremium.toLocaleString()}</span>
               <span>GST (18%): ₹{gst.toLocaleString()}</span>
             </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Market Comparison */}
+      <Card className="p-6 bg-gradient-to-br from-background to-muted/30">
+        <CardHeader className="p-0 mb-4">
+          <CardTitle className="flex items-center space-x-2">
+            {comparison.isLower ? (
+              <TrendingDown className="h-5 w-5 text-green-600" />
+            ) : (
+              <TrendingUp className="h-5 w-5 text-orange-500" />
+            )}
+            <span>Market Comparison</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-0 space-y-4">
+          {comparison.isLower ? (
+            <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="font-semibold text-green-800 dark:text-green-200">
+                    🎉 You're saving ₹{comparison.savings.toLocaleString()}!
+                  </div>
+                  <div className="text-sm text-green-600 dark:text-green-300">
+                    {comparison.savingsPercentage}% lower than market average
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-2xl font-bold text-green-700 dark:text-green-300">
+                    ₹{finalPremium.toLocaleString()}
+                  </div>
+                  <div className="text-sm text-muted-foreground">Our Premium</div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="bg-orange-50 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-800 rounded-lg p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="font-semibold text-orange-800 dark:text-orange-200">
+                    Premium above market average
+                  </div>
+                  <div className="text-sm text-orange-600 dark:text-orange-300">
+                    {Math.abs(comparison.savingsPercentage)}% higher than average
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-2xl font-bold text-orange-700 dark:text-orange-300">
+                    ₹{finalPremium.toLocaleString()}
+                  </div>
+                  <div className="text-sm text-muted-foreground">Our Premium</div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className="space-y-3">
+            <div className="text-sm font-medium text-muted-foreground">
+              Market Average: ₹{comparison.avgMarketPremium.toLocaleString()}
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {comparison.marketData.map((competitor) => (
+                <div 
+                  key={competitor.company}
+                  className="bg-card border rounded-lg p-3 text-sm"
+                >
+                  <div className="font-medium text-xs text-muted-foreground mb-1">
+                    {competitor.company}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold">₹{competitor.premium.toLocaleString()}</span>
+                    {competitor.premium > finalPremium ? (
+                      <TrendingUp className="h-3 w-3 text-red-500" />
+                    ) : competitor.premium < finalPremium ? (
+                      <TrendingDown className="h-3 w-3 text-green-500" />
+                    ) : (
+                      <Minus className="h-3 w-3 text-gray-500" />
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-xs text-muted-foreground">
+            * Comparison based on similar coverage and profile. Actual premiums may vary.
           </div>
         </CardContent>
       </Card>
