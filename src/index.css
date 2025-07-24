@@ -44,6 +44,9 @@ All colors MUST be HSL.
     --shadow-card: 0 4px 6px -1px hsl(var(--primary) / 0.1);
     --shadow-elevated: 0 10px 25px -3px hsl(var(--primary) / 0.15);
     --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
+    
+    /* Dropdown z-index */
+    --dropdown-z-index: 50;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -117,5 +120,22 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Ensure dropdown components have proper background and z-index */
+  [data-radix-popper-content-wrapper] {
+    z-index: 50 !important;
+  }
+  
+  .select-content {
+    @apply bg-popover border shadow-md z-50;
+  }
+  
+  .select-item {
+    @apply relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none;
+    @apply focus:bg-accent focus:text-accent-foreground;
+    @apply data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
   }
 }
