@@ -82,6 +82,206 @@ const cityMapping: { [key: string]: string[] } = {
   'Puducherry': ['Karaikal', 'Mahe', 'Puducherry', 'Yanam']
 };
 
+// Pincode to city mapping for major cities (sample data for demonstration)
+const pincodeCityMapping: { [key: string]: string } = {
+  // Mumbai
+  '400001': 'Mumbai City', '400002': 'Mumbai City', '400003': 'Mumbai City', '400004': 'Mumbai City',
+  '400005': 'Mumbai City', '400006': 'Mumbai City', '400007': 'Mumbai City', '400008': 'Mumbai City',
+  '400009': 'Mumbai City', '400010': 'Mumbai City', '400011': 'Mumbai City', '400012': 'Mumbai City',
+  '400013': 'Mumbai City', '400014': 'Mumbai City', '400015': 'Mumbai City', '400016': 'Mumbai City',
+  '400017': 'Mumbai City', '400018': 'Mumbai City', '400019': 'Mumbai City', '400020': 'Mumbai City',
+  '400021': 'Mumbai City', '400022': 'Mumbai City', '400023': 'Mumbai City', '400024': 'Mumbai City',
+  '400025': 'Mumbai City', '400026': 'Mumbai City', '400027': 'Mumbai City', '400028': 'Mumbai City',
+  '400029': 'Mumbai City', '400030': 'Mumbai City', '400031': 'Mumbai City', '400032': 'Mumbai City',
+  '400033': 'Mumbai City', '400034': 'Mumbai City', '400035': 'Mumbai City', '400036': 'Mumbai City',
+  '400037': 'Mumbai City', '400038': 'Mumbai City', '400039': 'Mumbai City', '400040': 'Mumbai City',
+  '400050': 'Mumbai Suburban', '400051': 'Mumbai Suburban', '400052': 'Mumbai Suburban', '400053': 'Mumbai Suburban',
+  '400054': 'Mumbai Suburban', '400055': 'Mumbai Suburban', '400056': 'Mumbai Suburban', '400057': 'Mumbai Suburban',
+  '400058': 'Mumbai Suburban', '400059': 'Mumbai Suburban', '400060': 'Mumbai Suburban', '400061': 'Mumbai Suburban',
+  '400062': 'Mumbai Suburban', '400063': 'Mumbai Suburban', '400064': 'Mumbai Suburban', '400065': 'Mumbai Suburban',
+  '400066': 'Mumbai Suburban', '400067': 'Mumbai Suburban', '400068': 'Mumbai Suburban', '400069': 'Mumbai Suburban',
+  '400070': 'Mumbai Suburban', '400071': 'Mumbai Suburban', '400072': 'Mumbai Suburban', '400074': 'Mumbai Suburban',
+  '400075': 'Mumbai Suburban', '400076': 'Mumbai Suburban', '400077': 'Mumbai Suburban', '400078': 'Mumbai Suburban',
+  '400079': 'Mumbai Suburban', '400080': 'Mumbai Suburban', '400081': 'Mumbai Suburban', '400082': 'Mumbai Suburban',
+  '400083': 'Mumbai Suburban', '400084': 'Mumbai Suburban', '400085': 'Mumbai Suburban', '400086': 'Mumbai Suburban',
+  '400087': 'Mumbai Suburban', '400088': 'Mumbai Suburban', '400089': 'Mumbai Suburban', '400090': 'Mumbai Suburban',
+  '400091': 'Mumbai Suburban', '400092': 'Mumbai Suburban', '400093': 'Mumbai Suburban', '400094': 'Mumbai Suburban',
+  '400095': 'Mumbai Suburban', '400096': 'Mumbai Suburban', '400097': 'Mumbai Suburban', '400098': 'Mumbai Suburban',
+  '400099': 'Mumbai Suburban', '400101': 'Thane', '400102': 'Thane', '400103': 'Thane', '400104': 'Thane',
+  '400105': 'Thane', '400601': 'Thane', '400602': 'Thane', '400603': 'Thane', '400604': 'Thane',
+  '400605': 'Thane', '400606': 'Thane', '400607': 'Thane', '400608': 'Thane', '400609': 'Thane',
+  '400610': 'Thane', '400611': 'Thane', '400612': 'Thane', '400613': 'Thane', '400614': 'Thane',
+  
+  // Delhi
+  '110001': 'Central Delhi', '110002': 'Central Delhi', '110003': 'Central Delhi', '110004': 'Central Delhi',
+  '110005': 'Central Delhi', '110006': 'Central Delhi', '110007': 'Central Delhi', '110008': 'Central Delhi',
+  '110009': 'Central Delhi', '110010': 'Central Delhi', '110011': 'Central Delhi', '110012': 'Central Delhi',
+  '110013': 'Central Delhi', '110014': 'Central Delhi', '110015': 'North Delhi', '110016': 'North Delhi',
+  '110017': 'North Delhi', '110018': 'North Delhi', '110019': 'North Delhi', '110020': 'North Delhi',
+  '110021': 'New Delhi', '110022': 'New Delhi', '110023': 'New Delhi', '110024': 'South West Delhi',
+  '110025': 'South Delhi', '110026': 'South Delhi', '110027': 'South Delhi', '110028': 'South Delhi',
+  '110029': 'South Delhi', '110030': 'South Delhi', '110031': 'North West Delhi', '110032': 'North West Delhi',
+  '110033': 'North West Delhi', '110034': 'North West Delhi', '110035': 'North West Delhi', '110036': 'North West Delhi',
+  '110037': 'North West Delhi', '110038': 'North West Delhi', '110039': 'North West Delhi', '110040': 'North West Delhi',
+  '110041': 'North West Delhi', '110042': 'North West Delhi', '110043': 'North West Delhi', '110044': 'South Delhi',
+  '110045': 'South Delhi', '110046': 'South Delhi', '110047': 'South Delhi', '110048': 'South Delhi',
+  '110049': 'South Delhi', '110050': 'South Delhi', '110051': 'South Delhi', '110052': 'South Delhi',
+  '110053': 'South Delhi', '110054': 'South Delhi', '110055': 'South Delhi', '110056': 'South Delhi',
+  '110057': 'South Delhi', '110058': 'South Delhi', '110059': 'South Delhi', '110060': 'South Delhi',
+  '110061': 'South Delhi', '110062': 'South Delhi', '110063': 'South Delhi', '110064': 'South Delhi',
+  '110065': 'South Delhi', '110066': 'South Delhi', '110067': 'South Delhi', '110068': 'South Delhi',
+  '110070': 'South Delhi', '110071': 'South Delhi', '110072': 'South Delhi', '110073': 'South Delhi',
+  '110074': 'South Delhi', '110075': 'South Delhi', '110076': 'South Delhi', '110077': 'South Delhi',
+  '110078': 'South Delhi', '110080': 'South Delhi', '110081': 'South Delhi', '110082': 'South Delhi',
+  '110083': 'South Delhi', '110084': 'South Delhi', '110085': 'South Delhi', '110086': 'South Delhi',
+  '110087': 'South Delhi', '110088': 'South Delhi', '110089': 'South Delhi', '110091': 'East Delhi',
+  '110092': 'East Delhi', '110093': 'East Delhi', '110094': 'East Delhi', '110095': 'East Delhi',
+  '110096': 'East Delhi',
+  
+  // Bangalore
+  '560001': 'Bengaluru Urban', '560002': 'Bengaluru Urban', '560003': 'Bengaluru Urban', '560004': 'Bengaluru Urban',
+  '560005': 'Bengaluru Urban', '560006': 'Bengaluru Urban', '560007': 'Bengaluru Urban', '560008': 'Bengaluru Urban',
+  '560009': 'Bengaluru Urban', '560010': 'Bengaluru Urban', '560011': 'Bengaluru Urban', '560012': 'Bengaluru Urban',
+  '560013': 'Bengaluru Urban', '560014': 'Bengaluru Urban', '560015': 'Bengaluru Urban', '560016': 'Bengaluru Urban',
+  '560017': 'Bengaluru Urban', '560018': 'Bengaluru Urban', '560019': 'Bengaluru Urban', '560020': 'Bengaluru Urban',
+  '560021': 'Bengaluru Urban', '560022': 'Bengaluru Urban', '560023': 'Bengaluru Urban', '560024': 'Bengaluru Urban',
+  '560025': 'Bengaluru Urban', '560026': 'Bengaluru Urban', '560027': 'Bengaluru Urban', '560028': 'Bengaluru Urban',
+  '560029': 'Bengaluru Urban', '560030': 'Bengaluru Urban', '560031': 'Bengaluru Urban', '560032': 'Bengaluru Urban',
+  '560033': 'Bengaluru Urban', '560034': 'Bengaluru Urban', '560035': 'Bengaluru Urban', '560036': 'Bengaluru Urban',
+  '560037': 'Bengaluru Urban', '560038': 'Bengaluru Urban', '560039': 'Bengaluru Urban', '560040': 'Bengaluru Urban',
+  '560041': 'Bengaluru Urban', '560042': 'Bengaluru Urban', '560043': 'Bengaluru Urban', '560044': 'Bengaluru Urban',
+  '560045': 'Bengaluru Urban', '560046': 'Bengaluru Urban', '560047': 'Bengaluru Urban', '560048': 'Bengaluru Urban',
+  '560049': 'Bengaluru Urban', '560050': 'Bengaluru Urban', '560051': 'Bengaluru Urban', '560052': 'Bengaluru Urban',
+  '560053': 'Bengaluru Urban', '560054': 'Bengaluru Urban', '560055': 'Bengaluru Urban', '560056': 'Bengaluru Urban',
+  '560057': 'Bengaluru Urban', '560058': 'Bengaluru Urban', '560059': 'Bengaluru Urban', '560060': 'Bengaluru Urban',
+  '560061': 'Bengaluru Urban', '560062': 'Bengaluru Urban', '560063': 'Bengaluru Urban', '560064': 'Bengaluru Urban',
+  '560065': 'Bengaluru Urban', '560066': 'Bengaluru Urban', '560067': 'Bengaluru Urban', '560068': 'Bengaluru Urban',
+  '560069': 'Bengaluru Urban', '560070': 'Bengaluru Urban', '560071': 'Bengaluru Urban', '560072': 'Bengaluru Urban',
+  '560073': 'Bengaluru Urban', '560074': 'Bengaluru Urban', '560075': 'Bengaluru Urban', '560076': 'Bengaluru Urban',
+  '560077': 'Bengaluru Urban', '560078': 'Bengaluru Urban', '560079': 'Bengaluru Urban', '560080': 'Bengaluru Urban',
+  '560081': 'Bengaluru Urban', '560082': 'Bengaluru Urban', '560083': 'Bengaluru Urban', '560084': 'Bengaluru Urban',
+  '560085': 'Bengaluru Urban', '560086': 'Bengaluru Urban', '560087': 'Bengaluru Urban', '560088': 'Bengaluru Urban',
+  '560089': 'Bengaluru Urban', '560090': 'Bengaluru Urban', '560091': 'Bengaluru Urban', '560092': 'Bengaluru Urban',
+  '560093': 'Bengaluru Urban', '560094': 'Bengaluru Urban', '560095': 'Bengaluru Urban', '560096': 'Bengaluru Urban',
+  '560097': 'Bengaluru Urban', '560098': 'Bengaluru Urban', '560099': 'Bengaluru Urban', '560100': 'Bengaluru Urban',
+  
+  // Chennai
+  '600001': 'Chennai', '600002': 'Chennai', '600003': 'Chennai', '600004': 'Chennai',
+  '600005': 'Chennai', '600006': 'Chennai', '600007': 'Chennai', '600008': 'Chennai',
+  '600009': 'Chennai', '600010': 'Chennai', '600011': 'Chennai', '600012': 'Chennai',
+  '600013': 'Chennai', '600014': 'Chennai', '600015': 'Chennai', '600016': 'Chennai',
+  '600017': 'Chennai', '600018': 'Chennai', '600019': 'Chennai', '600020': 'Chennai',
+  '600021': 'Chennai', '600022': 'Chennai', '600023': 'Chennai', '600024': 'Chennai',
+  '600025': 'Chennai', '600026': 'Chennai', '600027': 'Chennai', '600028': 'Chennai',
+  '600029': 'Chennai', '600030': 'Chennai', '600031': 'Chennai', '600032': 'Chennai',
+  '600033': 'Chennai', '600034': 'Chennai', '600035': 'Chennai', '600036': 'Chennai',
+  '600037': 'Chennai', '600038': 'Chennai', '600039': 'Chennai', '600040': 'Chennai',
+  '600041': 'Chennai', '600042': 'Chennai', '600043': 'Chennai', '600044': 'Chennai',
+  '600045': 'Chennai', '600046': 'Chennai', '600047': 'Chennai', '600048': 'Chennai',
+  '600049': 'Chennai', '600050': 'Chennai', '600051': 'Chennai', '600052': 'Chennai',
+  '600053': 'Chennai', '600054': 'Chennai', '600055': 'Chennai', '600056': 'Chennai',
+  '600057': 'Chennai', '600058': 'Chennai', '600059': 'Chennai', '600060': 'Chennai',
+  '600061': 'Chennai', '600062': 'Chennai', '600063': 'Chennai', '600064': 'Chennai',
+  '600065': 'Chennai', '600066': 'Chennai', '600067': 'Chennai', '600068': 'Chennai',
+  '600069': 'Chennai', '600070': 'Chennai', '600071': 'Chennai', '600072': 'Chennai',
+  '600073': 'Chennai', '600074': 'Chennai', '600075': 'Chennai', '600076': 'Chennai',
+  '600077': 'Chennai', '600078': 'Chennai', '600079': 'Chennai', '600080': 'Chennai',
+  '600081': 'Chennai', '600082': 'Chennai', '600083': 'Chennai', '600084': 'Chennai',
+  '600085': 'Chennai', '600086': 'Chennai', '600087': 'Chennai', '600088': 'Chennai',
+  '600089': 'Chennai', '600090': 'Chennai', '600091': 'Chennai', '600092': 'Chennai',
+  '600093': 'Chennai', '600094': 'Chennai', '600095': 'Chennai', '600096': 'Chennai',
+  '600097': 'Chennai', '600098': 'Chennai', '600099': 'Chennai', '600100': 'Chennai',
+  
+  // Hyderabad
+  '500001': 'Hyderabad', '500002': 'Hyderabad', '500003': 'Hyderabad', '500004': 'Hyderabad',
+  '500005': 'Hyderabad', '500006': 'Hyderabad', '500007': 'Hyderabad', '500008': 'Hyderabad',
+  '500009': 'Hyderabad', '500010': 'Hyderabad', '500011': 'Hyderabad', '500012': 'Hyderabad',
+  '500013': 'Hyderabad', '500014': 'Hyderabad', '500015': 'Hyderabad', '500016': 'Hyderabad',
+  '500017': 'Hyderabad', '500018': 'Hyderabad', '500019': 'Hyderabad', '500020': 'Hyderabad',
+  '500021': 'Hyderabad', '500022': 'Hyderabad', '500023': 'Hyderabad', '500024': 'Hyderabad',
+  '500025': 'Hyderabad', '500026': 'Hyderabad', '500027': 'Hyderabad', '500028': 'Hyderabad',
+  '500029': 'Hyderabad', '500030': 'Hyderabad', '500031': 'Hyderabad', '500032': 'Hyderabad',
+  '500033': 'Hyderabad', '500034': 'Hyderabad', '500035': 'Hyderabad', '500036': 'Hyderabad',
+  '500037': 'Hyderabad', '500038': 'Hyderabad', '500039': 'Hyderabad', '500040': 'Hyderabad',
+  '500041': 'Hyderabad', '500042': 'Hyderabad', '500043': 'Hyderabad', '500044': 'Hyderabad',
+  '500045': 'Hyderabad', '500046': 'Hyderabad', '500047': 'Hyderabad', '500048': 'Hyderabad',
+  '500049': 'Hyderabad', '500050': 'Hyderabad', '500051': 'Hyderabad', '500052': 'Hyderabad',
+  '500053': 'Hyderabad', '500054': 'Hyderabad', '500055': 'Hyderabad', '500056': 'Hyderabad',
+  '500057': 'Hyderabad', '500058': 'Hyderabad', '500059': 'Hyderabad', '500060': 'Hyderabad',
+  '500061': 'Hyderabad', '500062': 'Hyderabad', '500063': 'Hyderabad', '500064': 'Hyderabad',
+  '500065': 'Hyderabad', '500066': 'Hyderabad', '500067': 'Hyderabad', '500068': 'Hyderabad',
+  '500069': 'Hyderabad', '500070': 'Hyderabad', '500071': 'Hyderabad', '500072': 'Hyderabad',
+  '500073': 'Hyderabad', '500074': 'Hyderabad', '500075': 'Hyderabad', '500076': 'Hyderabad',
+  '500077': 'Hyderabad', '500078': 'Hyderabad', '500079': 'Hyderabad', '500080': 'Hyderabad',
+  '500081': 'Hyderabad', '500082': 'Hyderabad', '500083': 'Hyderabad', '500084': 'Hyderabad',
+  '500085': 'Hyderabad', '500086': 'Hyderabad', '500087': 'Hyderabad', '500088': 'Hyderabad',
+  '500089': 'Hyderabad', '500090': 'Hyderabad', '500091': 'Hyderabad', '500092': 'Hyderabad',
+  '500093': 'Hyderabad', '500094': 'Hyderabad', '500095': 'Hyderabad', '500096': 'Hyderabad',
+  '500097': 'Hyderabad', '500098': 'Hyderabad', '500099': 'Hyderabad', '500100': 'Hyderabad',
+  
+  // Pune
+  '411001': 'Pune', '411002': 'Pune', '411003': 'Pune', '411004': 'Pune',
+  '411005': 'Pune', '411006': 'Pune', '411007': 'Pune', '411008': 'Pune',
+  '411009': 'Pune', '411010': 'Pune', '411011': 'Pune', '411012': 'Pune',
+  '411013': 'Pune', '411014': 'Pune', '411015': 'Pune', '411016': 'Pune',
+  '411017': 'Pune', '411018': 'Pune', '411019': 'Pune', '411020': 'Pune',
+  '411021': 'Pune', '411022': 'Pune', '411023': 'Pune', '411024': 'Pune',
+  '411025': 'Pune', '411026': 'Pune', '411027': 'Pune', '411028': 'Pune',
+  '411029': 'Pune', '411030': 'Pune', '411031': 'Pune', '411032': 'Pune',
+  '411033': 'Pune', '411034': 'Pune', '411035': 'Pune', '411036': 'Pune',
+  '411037': 'Pune', '411038': 'Pune', '411039': 'Pune', '411040': 'Pune',
+  '411041': 'Pune', '411042': 'Pune', '411043': 'Pune', '411044': 'Pune',
+  '411045': 'Pune', '411046': 'Pune', '411047': 'Pune', '411048': 'Pune',
+  '411049': 'Pune', '411050': 'Pune', '411051': 'Pune', '411052': 'Pune',
+  '411057': 'Pune', '411058': 'Pune', '411060': 'Pune', '411061': 'Pune',
+  
+  // Kolkata
+  '700001': 'Kolkata', '700002': 'Kolkata', '700003': 'Kolkata', '700004': 'Kolkata',
+  '700005': 'Kolkata', '700006': 'Kolkata', '700007': 'Kolkata', '700008': 'Kolkata',
+  '700009': 'Kolkata', '700010': 'Kolkata', '700011': 'Kolkata', '700012': 'Kolkata',
+  '700013': 'Kolkata', '700014': 'Kolkata', '700015': 'Kolkata', '700016': 'Kolkata',
+  '700017': 'Kolkata', '700018': 'Kolkata', '700019': 'Kolkata', '700020': 'Kolkata',
+  '700021': 'Kolkata', '700022': 'Kolkata', '700023': 'Kolkata', '700024': 'Kolkata',
+  '700025': 'Kolkata', '700026': 'Kolkata', '700027': 'Kolkata', '700028': 'Kolkata',
+  '700029': 'Kolkata', '700030': 'Kolkata', '700031': 'Kolkata', '700032': 'Kolkata',
+  '700033': 'Kolkata', '700034': 'Kolkata', '700035': 'Kolkata', '700036': 'Kolkata',
+  '700037': 'Kolkata', '700038': 'Kolkata', '700039': 'Kolkata', '700040': 'Kolkata',
+  '700041': 'Kolkata', '700042': 'Kolkata', '700043': 'Kolkata', '700044': 'Kolkata',
+  '700045': 'Kolkata', '700046': 'Kolkata', '700047': 'Kolkata', '700048': 'Kolkata',
+  '700049': 'Kolkata', '700050': 'Kolkata', '700051': 'Kolkata', '700052': 'Kolkata',
+  '700053': 'Kolkata', '700054': 'Kolkata', '700055': 'Kolkata', '700056': 'Kolkata',
+  '700057': 'Kolkata', '700058': 'Kolkata', '700059': 'Kolkata', '700060': 'Kolkata',
+  '700061': 'Kolkata', '700062': 'Kolkata', '700063': 'Kolkata', '700064': 'Kolkata',
+  '700065': 'Kolkata', '700066': 'Kolkata', '700067': 'Kolkata', '700068': 'Kolkata',
+  '700069': 'Kolkata', '700070': 'Kolkata', '700071': 'Kolkata', '700072': 'Kolkata',
+  '700073': 'Kolkata', '700074': 'Kolkata', '700075': 'Kolkata', '700076': 'Kolkata',
+  '700077': 'Kolkata', '700078': 'Kolkata', '700079': 'Kolkata', '700080': 'Kolkata',
+  '700081': 'Kolkata', '700082': 'Kolkata', '700083': 'Kolkata', '700084': 'Kolkata',
+  '700085': 'Kolkata', '700086': 'Kolkata', '700087': 'Kolkata', '700088': 'Kolkata',
+  '700089': 'Kolkata', '700090': 'Kolkata', '700091': 'Kolkata', '700092': 'Kolkata',
+  '700093': 'Kolkata', '700094': 'Kolkata', '700095': 'Kolkata', '700096': 'Kolkata',
+  '700097': 'Kolkata', '700098': 'Kolkata', '700099': 'Kolkata', '700100': 'Kolkata',
+  
+  // Add more major cities as needed...
+  // Ahmedabad
+  '380001': 'Ahmedabad', '380002': 'Ahmedabad', '380003': 'Ahmedabad', '380004': 'Ahmedabad',
+  '380005': 'Ahmedabad', '380006': 'Ahmedabad', '380007': 'Ahmedabad', '380008': 'Ahmedabad',
+  '380009': 'Ahmedabad', '380010': 'Ahmedabad', '380011': 'Ahmedabad', '380012': 'Ahmedabad',
+  '380013': 'Ahmedabad', '380014': 'Ahmedabad', '380015': 'Ahmedabad', '380016': 'Ahmedabad',
+  '380017': 'Ahmedabad', '380018': 'Ahmedabad', '380019': 'Ahmedabad', '380020': 'Ahmedabad',
+  '380021': 'Ahmedabad', '380022': 'Ahmedabad', '380023': 'Ahmedabad', '380024': 'Ahmedabad',
+  '380025': 'Ahmedabad', '380026': 'Ahmedabad', '380027': 'Ahmedabad', '380028': 'Ahmedabad',
+  '380029': 'Ahmedabad', '380030': 'Ahmedabad', '380031': 'Ahmedabad', '380032': 'Ahmedabad',
+  '380033': 'Ahmedabad', '380034': 'Ahmedabad', '380035': 'Ahmedabad', '380036': 'Ahmedabad',
+  '380037': 'Ahmedabad', '380038': 'Ahmedabad', '380039': 'Ahmedabad', '380040': 'Ahmedabad',
+  '380041': 'Ahmedabad', '380042': 'Ahmedabad', '380043': 'Ahmedabad', '380044': 'Ahmedabad',
+  '380045': 'Ahmedabad', '380046': 'Ahmedabad', '380047': 'Ahmedabad', '380048': 'Ahmedabad',
+  '380049': 'Ahmedabad', '380050': 'Ahmedabad', '380051': 'Ahmedabad', '380052': 'Ahmedabad',
+  '380053': 'Ahmedabad', '380054': 'Ahmedabad', '380055': 'Ahmedabad', '380056': 'Ahmedabad',
+  '380057': 'Ahmedabad', '380058': 'Ahmedabad', '380059': 'Ahmedabad', '380060': 'Ahmedabad',
+  '380061': 'Ahmedabad', '380062': 'Ahmedabad', '380063': 'Ahmedabad'
+};
+
 interface LocationFormProps {
   data: {
     state: string;
@@ -104,8 +304,34 @@ export const LocationForm: React.FC<LocationFormProps> = ({ data, onUpdate, onNe
   };
 
   const handlePincodeChange = (pincode: string) => {
-    // Auto-select state based on pincode if not already selected
-    if (pincode.length >= 3 && !data.state) {
+    // Auto-select state and city based on pincode
+    if (pincode.length === 6) {
+      const pincodePrefix = pincode.substring(0, 3);
+      
+      // Auto-select state if not already selected
+      let selectedState = data.state;
+      if (!selectedState) {
+        selectedState = Object.keys(pincodeStateMapping).find(state => 
+          pincodeStateMapping[state].includes(pincodePrefix)
+        ) || '';
+      }
+      
+      // Auto-select city based on exact pincode mapping
+      const autoSelectedCity = pincodeCityMapping[pincode] || '';
+      
+      // If we found both state and city, update them
+      if (selectedState && autoSelectedCity) {
+        onUpdate({ ...data, state: selectedState, city: autoSelectedCity, pincode });
+        return;
+      }
+      
+      // If we only found state, update it and clear city
+      if (selectedState && selectedState !== data.state) {
+        onUpdate({ ...data, state: selectedState, city: '', pincode });
+        return;
+      }
+    } else if (pincode.length >= 3 && !data.state) {
+      // Auto-select state based on prefix if not already selected
       const pincodePrefix = pincode.substring(0, 3);
       const matchingState = Object.keys(pincodeStateMapping).find(state => 
         pincodeStateMapping[state].includes(pincodePrefix)
@@ -115,6 +341,7 @@ export const LocationForm: React.FC<LocationFormProps> = ({ data, onUpdate, onNe
         return;
       }
     }
+    
     onUpdate({ ...data, pincode });
   };
 
